@@ -1,0 +1,140 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+//$my-app-primary: mat-palette($mat-pink, 500, 300, 800);
+$black-87-opacity: rgba(black, 0.87);
+// @deprecated renamed to $light-primary-text.
+// @deletion-target 7.0.0
+$white-87-opacity: rgba(white, 0.87);
+// @deprecated use $dark-[secondary-text,disabled-text,dividers,focused] instead.
+// @deletion-target 7.0.0
+$black-12-opacity: rgba(black, 0.12);
+// @deprecated use $light-[secondary-text,disabled-text,dividers,focused] instead.
+// @deletion-target 7.0.0
+$white-12-opacity: rgba(white, 0.12);
+// @deprecated use $dark-[secondary-text,disabled-text,dividers,focused] instead.
+// @deletion-target 7.0.0
+$black-6-opacity: rgba(black, 0.06);
+// @deprecated use $light-[secondary-text,disabled-text,dividers,focused] instead.
+// @deletion-target 7.0.0
+$white-6-opacity: rgba(white, 0.06);
+
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+$mat-custom-primary: (
+  50: #e0edf0,
+  100: #b3d2da,
+  200: #80b4c2,
+  300: #4d95aa,
+  400: #267f97,
+  500: #006885,
+  600: #00607d,
+  700: #005572,
+  800: #004b68,
+  900: #003a55,
+  A100: #87d0ff,
+  A200: #54bcff,
+  A400: #21a8ff,
+  A700: #089eff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$custom-green-palette: (
+  50: #e4f6eb,
+  100: #bae9cd,
+  200: #8ddbac,
+  300: #5fcd8b,
+  400: #3cc272,
+  500: #1ab759,
+  600: #17b051,
+  700: #13a748,
+  800: #0f9f3e,
+  900: #08902e,
+  A100: #beffcc,
+  A200: #8bffa5,
+  A400: #58ff7d,
+  A700: #3eff69,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$testmaterial-primary: mat.define-palette($mat-custom-primary);
+//$testmaterial-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$testmaterial-accent: mat.define-palette($custom-green-palette);
+
+// The warn palette is optional (defaults to red).
+$testmaterial-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$testmaterial-theme: mat.define-light-theme((
+  color: (
+    primary: $testmaterial-primary,
+    accent: $testmaterial-accent,
+    warn: $testmaterial-warn
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($testmaterial-theme);
+
+
+// For input field
+.dense-1 {
+  @include mat.all-component-densities(-1);
+}
+
+.dense-3 {
+  @include mat.all-component-densities(-3);
+}

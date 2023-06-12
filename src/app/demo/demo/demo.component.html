@@ -1,0 +1,112 @@
+
+<div class="custom-table">
+  <ng-container>
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <ng-container  *ngFor="let h of header; let i  = index">
+              <th *ngIf="h.status === true" [class]="h.className" [style.width]="h.className === 'checkbox' || h.className === 'search' ? '50px' : ''">
+                {{h.name}}
+              </th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="status" [style.width]="'150px'">
+            </td>
+            <td class="checkbox" [style.width]="'50px'"><mat-icon>search</mat-icon></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <tr>
+            <td class="status">
+              <div class="status-contain">
+                <span class="cancel"></span>
+                <span class="delay"></span>
+                <span class="vip"></span>
+              </div>
+            </td>
+            <td class="checkbox" [style.width]="'50px'"><mat-checkbox color="custom-primary" [checked]="false" [disabled]="false"></mat-checkbox></td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+          </tr>
+          <tr>
+            <td  class="status">
+              <div class="status-contain">
+                <span class="tech-err"></span>
+                <span class="delay"></span>
+                <span class="vip"></span>
+              </div> 
+            </td>
+            <td  class="checkbox" [style.width]="'50px'"><mat-checkbox color="custom-primary" [checked]="false" [disabled]="false"></mat-checkbox></td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+          </tr>
+          <tr>
+            <td  class="status">
+              <div class="status-contain">
+                <span class="unusual"></span>
+                <span class="delay"></span>
+                <span class="vip"></span>
+              </div>
+            </td>
+            <td  class="checkbox" [style.width]="'50px'"><mat-checkbox color="custom-primary" [checked]="false" [disabled]="false"></mat-checkbox></td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+
+
+
+
+
+
+
+
+
+<!-- view column  -->
+  <ng-container *ngIf="viewColumnStatus">
+    <div class="model-layer"></div>
+    <div class="view-column">
+      <div class="parent-container">
+        <div class="head-title">
+          <span class="ViewColumn">View Column</span>
+          <span class="close-fill"><mat-icon (click)="closeViewColumn(true)">close-fill</mat-icon></span>
+       </div>
+       <div class="menu-container">
+         <div class="list">
+           <div class="list-icon" *ngFor="let l of viewColumn; let i = index">
+             <mat-icon class="icon-menu">menu</mat-icon>
+             <span class="name">{{l.name}}</span>
+             <div class="toggle-switch" [class.checked]="isChecked[i]" (click)="toggleSwitch(i)">
+               <div class="toggle-handle" [style.left]="isChecked[i] ? '-7px' : '0px'"></div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="footer-button">
+           <button type="button" class="cancel">Hủy</button>
+           <button type="button" class="apply">Áp Dụng</button>
+       </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
